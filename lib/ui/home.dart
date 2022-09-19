@@ -15,7 +15,7 @@ class _HomeState extends State<Home> {
   void _resetCampos() {
     pesoController = TextEditingController();
     alturaController = TextEditingController();
-    _formKey.currentState.reset();
+    _formKey.currentState!.reset();
   }
 
   @override
@@ -50,7 +50,7 @@ class _HomeState extends State<Home> {
                 style: TextStyle(color: Colors.blueAccent, fontSize: 25.0),
                 controller: pesoController,
                 validator: (value) {
-                  if (value.isEmpty)
+                  if (value!.isEmpty)
                     return "Insira seu peso!";
                   else
                     return null;
@@ -65,7 +65,7 @@ class _HomeState extends State<Home> {
                 style: TextStyle(color: Colors.blueAccent, fontSize: 25.0),
                 controller: alturaController,
                 validator: (value) {
-                  if (value.isEmpty)
+                  if (value!.isEmpty)
                     return "Insira sua altura!";
                   else
                     return null;
@@ -77,7 +77,7 @@ class _HomeState extends State<Home> {
                       height: 50.0,
                       child: ElevatedButton(
                         onPressed: () {
-                          if (_formKey.currentState.validate()) {
+                          if (_formKey.currentState!.validate()) {
                             _calcular();
                           }
                         },
@@ -109,22 +109,22 @@ class _HomeState extends State<Home> {
     //debugPrint("$imc");
     if (imc < 18.6) {
       _texto = "Abaixo do peso (${imc.toStringAsPrecision(4)})";
-      _imagem = "imagens/mulher-magra.png";
+      _imagem = "imagens/mulher-magra.jpg";
     } else if (imc >= 18.6 && imc < 24.9) {
       _texto = "Peso ideal (${imc.toStringAsPrecision(4)})";
-      _imagem = "imagens/fitness.png";
+      _imagem = "imagens/fitness.jpg";
     } else if (imc >= 24.9 && imc < 29.9) {
       _texto = "Levemente acima do peso (${imc.toStringAsPrecision(4)})";
-      _imagem = "imagens/mulher-gorda.png";
+      _imagem = "imagens/mulher-gorda.jpg";
     } else if (imc >= 29.9 && imc < 34.9) {
       _texto = "Obesidade Grau I (${imc.toStringAsPrecision(4)})";
-      _imagem = "imagens/mulher-gorda.png";
+      _imagem = "imagens/mulher-gorda.jpg";
     } else if (imc >= 34.9 && imc < 39.9) {
       _texto = "Obesidade Grau II (${imc.toStringAsPrecision(4)})";
-      _imagem = "imagens/mulher-gorda.png";
+      _imagem = "imagens/mulher-gorda.jpg";
     } else if (imc >= 40) {
       _texto = "Obesidade Grau III (${imc.toStringAsPrecision(4)})";
-      _imagem = "imagens/mulher-gorda.png";
+      _imagem = "imagens/mulher-gorda.jpg";
     }
 
     Navigator.push(context,
